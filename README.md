@@ -1,4 +1,4 @@
-# 🛍️ ShopSavvy AI
+# 🏍️ ShopSavvy AI
 
 **ShopSavvy AI** is a full-stack eCommerce web application powered by **Django (backend)** and **React (frontend)**. It includes cutting-edge AI features like product recommendations and a conversational chatbot using Hugging Face.
 
@@ -6,160 +6,174 @@
 
 ## 🔗 Live Demo
 
-_(Add deployed URLs here later, e.g. Netlify for frontend + Render/Vercel/EC2 for backend)_
+*(Add deployed URLs here later, e.g. Netlify for frontend + Render/Vercel/EC2 for backend)*
 
 ---
 
-## 🚀 Features
+## ✨ Features
 
 ### 👤 Users
-- User registration and login with JWT
-- Token-based authentication for secure API access
 
-### 🛒 Catalog
-- Browse products by category
-- View product details
+* User registration and login with JWT
+* Token-based authentication for secure API access
+
+### 💼 Catalog
+
+* Browse products by category
+* View product details
 
 ### 📦 Orders
-- Add to cart and checkout flow
-- Razorpay-integrated payment on checkout
-- Order summary and history
+
+* Add to cart and checkout flow
+* Razorpay-integrated payment on checkout
+* Order summary and history
 
 ### 🤖 AI Modules
-- **Smart Recommendations**: Uses Hugging Face model to suggest similar products
-- **Chatbot**: Natural conversation flow using Hugging Face conversational models
+
+* **Smart Recommendations**: Uses Hugging Face model to suggest similar products
+* **Chatbot**: Natural conversation flow using Hugging Face conversational models
 
 ---
 
 ## 🧠 Tech Stack
 
-| Layer        | Stack                                |
-|--------------|---------------------------------------|
-| Backend      | Django, MySQL, Django REST Framework |
-| Frontend     | React, Vite, Axios, React Router     |
-| AI           | Hugging Face Transformers API        |
-| Payment      | Razorpay JS SDK                      |
-| Deployment   | Docker (optional), GitHub Actions (optional) |
+| Layer      | Stack                                        |
+| ---------- | -------------------------------------------- |
+| Backend    | Django, MySQL, Django REST Framework         |
+| Frontend   | React, Vite, Axios, React Router             |
+| AI         | Hugging Face Transformers API                |
+| Payment    | Razorpay JS SDK                              |
+| Deployment | Docker (optional), GitHub Actions (optional) |
 
 ---
 
 ## 🛠️ Project Structure
 
+```
 shopsavvy-backend/
-├── users/
-├── catalog/
-├── orders/ # Includes payment integration (Razorpay)
-├── recommendations/
-├── chatbot/
-└── manage.py
+🕺 users/
+🕺 catalog/
+🕺 orders/     # Includes payment integration (Razorpay)
+🕺 recommendations/
+🕺 chatbot/
+🕺 manage.py
 
 shopsavvy-frontend/
-├── components/
-├── pages/
-├── routers.jsx # All route declarations
-├── App.jsx
-└── main.jsx
-
-yaml
-Copy code
+🕺 components/
+🕺 pages/
+🕺 routers.jsx   # All route declarations
+🕺 App.jsx
+🕺 main.jsx
+```
 
 ---
 
 ## ⚙️ Backend Setup (Django + MySQL)
 
 1. **Clone & setup virtual environment**
+
    ```bash
    git clone https://github.com/yourusername/shopsavvy-backend.git
    cd shopsavvy-backend
    python -m venv venv
    source venv/bin/activate
    pip install -r requirements.txt
-Configure MySQL & environment
+   ```
 
-Update settings.py with DB credentials
+2. **Configure MySQL & environment**
 
-Add .env (optional)
+   * Update `settings.py` with DB credentials
+   * Add `.env` (optional)
 
-Run migrations & server
+3. **Run migrations & server**
 
-bash
-Copy code
-python manage.py makemigrations
-python manage.py migrate
-python manage.py runserver
-Test API Endpoints
+   ```bash
+   python manage.py makemigrations
+   python manage.py migrate
+   python manage.py runserver
+   ```
 
-Use Postman or Swagger
+4. **Test API Endpoints**
 
-Ensure JWT is working via login/register
+   * Use Postman or Swagger
+   * Ensure JWT is working via login/register
 
-💻 Frontend Setup (React + Vite)
-Setup React App
+---
 
-bash
-Copy code
-cd shopsavvy-frontend
-npm install
-Configure .env
+## 💻 Frontend Setup (React + Vite)
 
-ini
-Copy code
-VITE_API_BASE_URL=http://localhost:8000/api
-VITE_RAZORPAY_KEY=your_razorpay_key
-Run Dev Server
+1. **Setup React App**
 
-bash
-Copy code
-npm run dev
-Routing
+   ```bash
+   cd shopsavvy-frontend
+   npm install
+   ```
 
-Defined in routers.jsx
+2. **Configure `.env`**
 
-Routes: /login, /register, /products, /product/:id, /orders, /checkout, /recommendations, /chat
+   ```
+   VITE_API_BASE_URL=http://localhost:8000/api
+   VITE_RAZORPAY_KEY=your_razorpay_key
+   ```
 
-🧪 Testing the App
-🔹 Backend
-Unit test APIs with Postman or Swagger
+3. **Run Dev Server**
 
-JWT Token checks
+   ```bash
+   npm run dev
+   ```
 
-Razorpay webhook simulation
+4. **Routing**
 
-🔹 Frontend
-Manual test all routes and API connections
+   * Defined in `routers.jsx`
+   * Routes: `/login`, `/register`, `/products`, `/product/:id`, `/orders`, `/checkout`, `/recommendations`, `/chat`
 
-Test Razorpay payment popup
+---
 
-Ensure chatbot + recommendation API responds
+## 🧪 Testing the App
 
-✅ Automated frontend testing can be added using Jest + React Testing Library
+### 🔹 Backend
 
-📦 Deployment Tips
-Frontend: Deploy on Netlify, Vercel, or Firebase
+* Unit test APIs with Postman or Swagger
+* JWT Token checks
+* Razorpay webhook simulation
 
-Backend: Deploy on Render, EC2, or Railway
+### 🔹 Frontend
 
-CORS: Ensure CORS is properly configured on Django
+* Manual test all routes and API connections
+* Test Razorpay payment popup
+* Ensure chatbot + recommendation API responds
 
-Domain Mapping: Point frontend domain to Netlify, backend to your server
+> ✅ Automated frontend testing can be added using Jest + React Testing Library
 
-📚 Future Enhancements
-Admin dashboard
+---
 
-Product search & filtering
+## 📦 Deployment Tips
 
-Wishlist & reviews
+* **Frontend**: Deploy on Netlify, Vercel, or Firebase
+* **Backend**: Deploy on Render, EC2, or Railway
+* **CORS**: Ensure CORS is properly configured on Django
+* **Domain Mapping**: Point frontend domain to Netlify, backend to your server
 
-Multi-language chatbot support
+---
 
-Unit & e2e test suite
+## 📚 Future Enhancements
 
-🤝 Contributors
-You – Backend & Frontend Developer
+* Admin dashboard
+* Product search & filtering
+* Wishlist & reviews
+* Multi-language chatbot support
+* Unit & e2e test suite
 
-Hugging Face – For model APIs
+---
 
-Razorpay – For payments
+## 🤝 Contributors
 
-📜 License
+* **You** – Backend & Frontend Developer
+* Hugging Face – For model APIs
+* Razorpay – For payments
+
+---
+
+## 📜 License
+
 MIT License
