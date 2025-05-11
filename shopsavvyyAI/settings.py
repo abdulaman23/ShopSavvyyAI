@@ -40,6 +40,8 @@ from datetime import timedelta
 import os
 RAZORPAY_API_KEY = os.getenv('RAZORPAY_API_KEY')
 RAZORPAY_API_SECRET = os.getenv('RAZORPAY_API_SECRET')
+HF_API_TOKEN = os.getenv("HF_API_TOKEN")
+
 
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=15),
@@ -64,6 +66,7 @@ INSTALLED_APPS = [
     'users',
     'catalog',
     'orders',
+    'recommendation',
 ]
 
 MIDDLEWARE = [
