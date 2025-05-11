@@ -6,7 +6,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
 # Create your views here.
-UGGINGFACE_API_URL = "https://api-inference.huggingface.co/models/google/flan-t5-base"
+HUGGINGFACE_API_URL = "https://api-inference.huggingface.co/models/google/flan-t5-base"
 
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
@@ -44,4 +44,34 @@ def get_recommendations(request):
             "title": p.title,
             "price": p.price
         } for p in products]
+    })
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def chatbot_reply(request):
+    user_message = request.data.get('message')
+
+    if not user_message:
+        return Response({'error': 'Message required'}, status=400)
+
+    headers = {
+        "Authorization": f"Bearer {settings.HF_API_TOKEN}"
+    }
+
+    prompt = f"Customer Support Chatbot:\nUser: {user_message}\nBot:"
+
+    payload = {
+        "inputs": prompt
+    }
+
+    response = requests.post(HUGGINGFACE_API_URL, headers=headers, json=payload)
+
+    if response.status_code != 200:
+        return Response({"error": "GenAI response failed"}, status=500)
+
+    reply = response.json()[0]['generated_text'].split("Bot:")[-1].strip()
+
+    return Response({
+        "user_message": user_message,
+        "chatbot_reply": reply
     })
