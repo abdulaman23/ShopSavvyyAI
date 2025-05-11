@@ -37,6 +37,10 @@ REST_FRAMEWORK = {
 
 from datetime import timedelta
 
+import os
+RAZORPAY_API_KEY = os.getenv('RAZORPAY_API_KEY')
+RAZORPAY_API_SECRET = os.getenv('RAZORPAY_API_SECRET')
+
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=15),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
